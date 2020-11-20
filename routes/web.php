@@ -17,6 +17,7 @@ Route::get('/', 'PageController@index')->name('index');
 Route::get('/home', 'PageController@index')->name('home');
 
 Route::get('/register', 'UserRegisterController@index');
+Route::post('/register', 'UserRegisterController@store');
 
 Route::get('/login', 'loginController@index')->name('login');
 Route::post('/login', 'loginController@authorizeLogin');
