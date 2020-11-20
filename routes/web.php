@@ -17,11 +17,14 @@ Route::get('/', 'PageController@index')->name('index');
 Route::get('/home', 'PageController@index')->name('home');
 
 Route::group(['middleware' => ['guest']], function() {
-    Route::get('/register', 'UserRegisterController@index');
-    Route::post('/register', 'UserRegisterController@store');
+    Route::get('/register', 'UserController@index');
+    Route::post('/register', 'UserController@store');
     
     Route::get('/login', 'loginController@index')->name('login');
     Route::post('/login', 'loginController@authorizeLogin');
 });
 
+Route::group(['middleware' => ['auth']], function() {
+    Route::get('/member/{id}', 'UserController@show');
+});
 
