@@ -44,7 +44,7 @@ class UserRegisterController extends Controller
         $newUser->email = $request['email'];
         $newUser->name = $request['name'];
         $newUser->username = $request['username'];
-        $newUser->email = bcrypt($request['password']);
+        $newUser->password = bcrypt($request['password']);
         $newUser->remember_token = Str::random(32);
         $newUser->save();
 

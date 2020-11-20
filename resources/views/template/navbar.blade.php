@@ -13,7 +13,7 @@
       @if(!Auth::user())
       <a class="nav-link" href="{{ url('/login') }}" id="login">Members</a>
       @else
-      <a class="nav-link" href="#" id="members">Members</a>
+      <a class="nav-link" href="#" id="member">{{ Auth::user()->username }}</a>
       @endif
     </div>
   </div>
