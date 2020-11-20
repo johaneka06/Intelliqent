@@ -1,4 +1,5 @@
 @extends('template/template')
+@section('page-title', 'Log In')
 @section('page-content')
 @if(!Auth::user())
 
