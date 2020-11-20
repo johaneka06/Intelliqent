@@ -1,3 +1,7 @@
 body {
     font-family: 'Raleway', sans-serif;
 }
+
+.navbar-hover-color:hover { color: #854dff !important; }
+
+.active { color: #4e3299 !important; }
