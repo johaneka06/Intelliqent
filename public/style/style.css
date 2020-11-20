@@ -5,3 +5,11 @@ body {
 .navbar-hover-color:hover { color: #854dff !important; }
 
 .active { color: #4e3299 !important; }
+
+.bg-purple{
+    background-color: #061551;
+}
+
+.text-light-purple{
+    color: #854dff;
+}

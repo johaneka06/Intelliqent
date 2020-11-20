@@ -22,11 +22,11 @@
                 <a class="nav-link mr-4" href="{{ url('/login') }}" id="login"><strong class="navbar-hover-color">Members</strong></a>
             </li>
             @else
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown mr-4">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <strong>{{ Auth::user()->username }}</strong>
+                    <strong class="navbar-hover-color">{{ Auth::user()->username }}</strong>
                 </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" href="{{ url('/member/'.Auth::user()->id) }}">View Profile</a>
                     <a class="dropdown-item" href="{{ url('/logout') }}">Log Out</a>
                 </div>
