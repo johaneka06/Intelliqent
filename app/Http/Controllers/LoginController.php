@@ -14,7 +14,12 @@ class LoginController extends Controller
 
     public function authorizeLogin(Request $request)
     {
-        if(Auth::attempt(['email' => $request->email, 'password' => $request->password]))
+        $request = $request->validate([
+            'email' => 'required | email',
+            'password' => 'required'
+        ]);
+
+        if(Auth::attempt(['email' => $request['email'], 'password' => $request['password']]))
         {
             return redirect('/');
         }
