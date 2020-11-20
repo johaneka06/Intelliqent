@@ -27,7 +27,7 @@
                     <strong class="navbar-hover-color">{{ Auth::user()->username }}</strong>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="{{ url('/member/'.Auth::user()->id) }}">View Profile</a>
+                    <a class="dropdown-item" href="{{ url('/member') }}">View Profile</a>
                     <a class="dropdown-item" href="{{ url('/logout') }}">Log Out</a>
                 </div>
             </li>
