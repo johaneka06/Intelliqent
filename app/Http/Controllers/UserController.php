@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
-class UserRegisterController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -64,7 +64,8 @@ class UserRegisterController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::where('id', '=', $id)->first();
+        return view('member', ['user' => $user]);
     }
 
     /**
