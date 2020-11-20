@@ -26,6 +26,7 @@ class NewUser extends FormRequest
         return [
             'email' => 'required|email|unique:users',
             'name' => 'required',
+            'username' => 'required',
             'password' => 'required|min:8',
             'confirm' => 'required|same:password',
         ];
