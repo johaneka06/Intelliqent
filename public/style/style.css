@@ -4,7 +4,7 @@ body {
 
 .navbar-hover-color:hover { color: #854dff !important; }
 
-.active { color: #4e3299 !important; }
+.active { color:  #4e3299 !important; }
 
 .bg-purple{
     background-color: #061551;
@@ -12,4 +12,35 @@ body {
 
 .text-light-purple{
     color: #854dff;
+}
+
+.btn-primary, .btn-primary:active, .btn-primary:visited, .btn:focus {
+    background-color:  #854dff !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.btn-primary:hover{
+    background-color:   #4e3299 !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.title-background{
+    background: rgb(207,118,225);
+    background: linear-gradient(171deg, rgba(207,118,225,1) 0%, rgba(255,182,139,1) 100%);
+    height: 850px;
+}
+
+.big-and-bold{
+    font-size: 100px;
+    font-weight: 900;
+    text-align: center;
+}
+
+.center-content{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
