@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Http\Requests\NewUser;
+use App\Preference;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -10,32 +12,36 @@ use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         return view('/register');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        $categories = Category::all();
+        return view('select-preference', ['categories' => $categories]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\NewUser  $request
-     * @return \Illuminate\Http\Response
-     */
+    public function save(Request $request)
+    {
+        $userId = Auth::user()->id;
+        $preferences = $request->input('preferences');
+
+        if($preferences != null)
+        {
+            foreach($preferences as $preference)
+            {
+                $pref = new Preference;
+                $pref->user_id = $userId;
+                $pref->category_id = $preference;
+                $pref->save();
+            }
+        }
+
+        return redirect('/');
+    }
+
     public function store(NewUser $request)
     {
         $request = $request->validated();
@@ -52,7 +58,7 @@ class UserController extends Controller
 
         Auth::attempt(['email' => $newUser->email, 'password' => $request['password']]);
 
-        return redirect('/');
+        return redirect('/register/preferences');
         
     }
 
@@ -62,24 +68,11 @@ class UserController extends Controller
         return view('member', ['user' => $user]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         //

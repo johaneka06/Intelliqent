@@ -19,12 +19,13 @@ Route::get('/home', 'PageController@index')->name('home');
 Route::group(['middleware' => ['guest']], function() {
     Route::get('/register', 'UserController@index');
     Route::post('/register', 'UserController@store');
-    
     Route::get('/login', 'loginController@index')->name('login');
     Route::post('/login', 'loginController@authorizeLogin');
 });
 
 Route::group(['middleware' => ['auth']], function() {
+    Route::get('/register/preferences', 'UserController@create');
+    Route::post('/register/preferences', 'UserController@save');
     Route::get('/member', 'UserController@show');
     Route::get('/logout', 'UserController@logout');
 });

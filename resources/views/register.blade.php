@@ -1,5 +1,5 @@
 @extends('template/template')
-@section('page-title', 'Intelliqent - Register')
+@section('page-title', 'Intelliqent | Register')
 @section('page-content')
 <div class="container mt-5">
   <strong>
