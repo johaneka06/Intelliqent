@@ -1,7 +1,7 @@
 @extends('template/template')
 @section('page-title', 'Course List')
 @section('page-content')
-<div class="container mt-4">
+<div class="container mt-4 mb-4">
   <div class="row">
     <div class="col-4">
       <div class="card">
@@ -19,15 +19,15 @@
       </div>
     </div>
 
-    <div class="col-8">
-      <div class="card">
+    <div class="col-8 mb-5">
+      <div class="card mb-5">
         <div class="card-header">
           <strong>Course List</strong>
         </div>
         <div class="card-body">
           <div class="row">
             @foreach($courses as $course)
-            <div class="col-4">
+            <div class="col-4 mb-3">
               <div class="card">
                 <div class="card-header">{{ $course->material_name }}</div>
                 <div class="card-body">
