@@ -21,11 +21,20 @@
     <div class="topic-list mt-3 mb-5">
       <h5>Topic List: </h5>
       @foreach($course->topics as $topic)
-      <div class="card mb-3">
+      <div class="card mb-3" data-aos="fade-up">
         <div class="card-body">
-          <h6><strong>{{ $topic->topic_name }}</strong></h6>
-          <p class="mt-3">Description: </p>
-          <p>{{ $topic->topic_description }}</p>
+          <div class="row">
+            <div class="col-10">
+              <h6><strong>{{ $topic->topic_name }}</strong></h6>
+              <p class="mt-3">Description: </p>
+              <p>{{ $topic->topic_description }}</p>
+            </div>
+
+            <div class="col-2 d-flex align-items-center">
+              <a href="{{ url('/course/'.$course->id.'/'.$topic->id) }}" class="btn btn-primary align-middle">Learn</a>
+            </div>
+          </div>
+
         </div>
       </div>
       @endforeach

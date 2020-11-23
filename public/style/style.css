@@ -49,3 +49,14 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+.ide {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 12pt;
+    background-color: black;
+    color: white;
+}
+
+.theater-mode {
+    background-color: #1d1d1d;
+}

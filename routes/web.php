@@ -30,6 +30,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/logout', 'UserController@logout');
     Route::get('/course/filter/category/', 'ContentController@find');
     Route::get('/course', 'ContentController@index');
+    Route::get('/course/{material_id}/{topic_id}', 'ContentController@topic');
     Route::get('/course/{id}', 'ContentController@show');
     
 });

@@ -4,15 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Material;
+use App\Topic;
 use Illuminate\Http\Request;
 
 class ContentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $courses = Material::all();
@@ -20,61 +16,36 @@ class ContentController extends Controller
         return view('courses', ['courses' => $courses, 'categories' => $categories]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         $course = Material::where('id', '=', $id)->first();
-        
+
         return view('course-detail', ['course' => $course]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+
+    public function topic($material_id, $topic_id)
     {
-        //
+        $current_topic = Topic::where('id', '=', $topic_id)->first();
+        
+        $topic_id++;
+
+        $next_topic = Topic::where([
+                ['id', '=', $topic_id],
+                ['material_id', '=', $material_id]
+            ])->first();
+
+        return view('course-video', ['current' => $current_topic, 'next' => $next_topic]);
     }
 
     public function find(Request $request)
