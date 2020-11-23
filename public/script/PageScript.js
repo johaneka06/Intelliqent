@@ -1,5 +1,6 @@
 function onLoad() {
     var location = window.location.pathname
+    AOS.init();
 
     if(location == '/') {
         var element = document.getElementById('home')
