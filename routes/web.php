@@ -28,5 +28,9 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('/register/preferences', 'UserController@save');
     Route::get('/member', 'UserController@show');
     Route::get('/logout', 'UserController@logout');
+    Route::get('/course/filter/category/', 'ContentController@find');
+    Route::get('/course', 'ContentController@index');
+    Route::get('/course/{id}', 'ContentController@show');
+    
 });
 

@@ -10,6 +10,9 @@ function onLoad() {
     } else if(location.includes('/member')){
         var element = document.getElementById('member')
         element.classList.add("active")
+    } else if(location.includes('course')) {
+        var element = document.getElementById('learn')
+        element.classList.add("active")
     }
     
 }
