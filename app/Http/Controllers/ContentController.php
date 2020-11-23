@@ -50,8 +50,8 @@ class ContentController extends Controller
     public function show($id)
     {
         $course = Material::where('id', '=', $id)->first();
-        dd($course->topics);
-        return view('course-detail');
+        
+        return view('course-detail', ['course' => $course]);
     }
 
     /**
@@ -80,7 +80,7 @@ class ContentController extends Controller
     public function find(Request $request)
     {
         if($request->category == null) return redirect('/course');
-        
+
         $topics = Material::whereIn('category_id', $request->category)->get();
         $categories = Category::all();
         
