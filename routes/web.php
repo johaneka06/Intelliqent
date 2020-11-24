@@ -34,6 +34,12 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/course', 'ContentController@create');
     Route::get('/course/{material_id}/{topic_id}', 'ContentController@topic');
     Route::get('/course/{id}', 'ContentController@show');
-    
+
+    Route::get('/forum/search', 'ForumController@search');
+    Route::post('/forum/newThread', 'ForumController@store');
+    Route::get('forum/filter/{id}', 'ForumController@create');
+    Route::get('/forum/thread/{id}', 'ForumController@show');
+    Route::post('/forum/thread/{id}/reply', 'ForumController@reply');
+    Route::get('/forum', 'ForumController@index');
 });
 

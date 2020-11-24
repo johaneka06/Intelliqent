@@ -17,3 +17,8 @@ function onLoad() {
     }
     
 }
+
+function loadForum() {
+    var select = document.getElementById("categorySelector");
+    window.location.replace("/forum/filter/" + select.value)
+}

@@ -14,7 +14,7 @@ class CreateThreadsTable extends Migration
     public function up()
     {
         Schema::create('threads', function (Blueprint $table) {
-            $table->string('id', 32)->primary();
+            $table->string('id', 50)->primary();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('category_id');
             $table->foreign('user_id')->references('id')->on('users');
@@ -22,6 +22,7 @@ class CreateThreadsTable extends Migration
             $table->string('thread_name');
             $table->text('thread_question');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

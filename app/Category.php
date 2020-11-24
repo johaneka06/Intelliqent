@@ -12,4 +12,9 @@ class Category extends Model
     {
         return $this->hasMany('App\Preference');
     }
+
+    public function Threads()
+    {
+        return $this->hasMany('App\Thread');
+    }
 }
