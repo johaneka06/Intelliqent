@@ -19,7 +19,7 @@
             </li>
             @if(!Auth::user())
             <li class="nav-item">
-                <a class="nav-link mr-4" href="{{ url('/login') }}" id="login"><strong class="navbar-hover-color">Members</strong></a>
+                <a class="nav-link mr-4" href="{{ url('/login') }}" id="login"><strong class="navbar-hover-color">Log In</strong></a>
             </li>
             @else
             <li class="nav-item dropdown mr-4">
