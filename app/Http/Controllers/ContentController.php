@@ -6,6 +6,8 @@ use App\Category;
 use App\Material;
 use App\Topic;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ContentController extends Controller
 {
@@ -18,7 +20,16 @@ class ContentController extends Controller
 
     public function create()
     {
-        //
+        $courses = DB::table('preferences')
+                        ->join('categories', 'preferences.category_id', '=', 'categories.id')
+                        ->join('materials', 'categories.id', '=', 'materials.category_id')
+                        ->where('preferences.user_id', '=', Auth::user()->id)
+                        ->get();
+        
+        $categories = Category::all();
+
+        return view('courses', ['courses' => $courses, 'categories' => $categories, 'isPreferred' => true]);
+        
     }
 
     public function show($id)

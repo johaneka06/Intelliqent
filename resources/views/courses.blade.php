@@ -53,6 +53,11 @@
             </div>
             @endforeach
           </div>
+          @if(isset($isPreferred))
+          <div class="text-center mt-3">
+            <a href="{{ url('/course/all') }}" class="btn btn-primary">See all course</a>
+          </div>
+          @endif
         </div>
       </div>
     </div>

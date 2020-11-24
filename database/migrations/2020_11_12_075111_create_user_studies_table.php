@@ -17,9 +17,11 @@ class CreateUserStudiesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('material_id');
-            
+            $table->unsignedBigInteger('topic_id');
+
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('material_id')->references('id')->on('materials');
+            $table->foreign('topic_id')->references('id')->on('topics');
 
             $table->timestamps();
         });
