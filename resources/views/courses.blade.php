@@ -38,7 +38,7 @@
           <div class="row">
             @foreach($courses as $course)
             <div class="col-4 mb-3">
-              <div class="card">
+              <div class="card" data-aos="fade-up" data-aos-duration="3000">
                 <div class="card-header">{{ $course->material_name }}</div>
                 <div class="card-body">
                   {{ \Illuminate\Support\Str::limit($course->material_description, 100, '...')  }}
