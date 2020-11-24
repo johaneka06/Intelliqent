@@ -19,10 +19,20 @@
       </div>
     </div>
 
-    <div class="col-8 mb-5">
+    <div class="col-8 mb-5 ">
       <div class="card mb-5">
-        <div class="card-header">
-          <strong>Course List</strong>
+        <div class="card-header d-flex">
+          <div class="row">
+            <div class="col">
+              <strong>Course List</strong>
+            </div>
+          </div>
+          <div class="col d-flex justify-content-end">
+            <div class="float-right">
+              @include('template/searchbar')
+            </div>
+          </div>
+          
         </div>
         <div class="card-body">
           <div class="row">

@@ -28,9 +28,14 @@ class ContentController extends Controller
         return view('course-detail', ['course' => $course]);
     }
 
-    public function edit($id)
+    public function search(Request $request)
     {
-        //
+        if($request == null) return redirect('/course');
+
+        $topics = Material::where('material_name', 'like', "%".$request->key."%")->get();
+        $categories = Category::all();
+        
+        return view('courses', ['courses' => $topics, 'categories' => $categories] );
     }
 
 

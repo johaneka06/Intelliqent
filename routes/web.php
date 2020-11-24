@@ -28,6 +28,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('/register/preferences', 'UserController@save');
     Route::get('/member', 'UserController@show');
     Route::get('/logout', 'UserController@logout');
+    Route::get('/course/search/', 'ContentController@search');
     Route::get('/course/filter/category/', 'ContentController@find');
     Route::get('/course', 'ContentController@index');
     Route::get('/course/{material_id}/{topic_id}', 'ContentController@topic');
