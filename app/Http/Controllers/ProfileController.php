@@ -9,6 +9,7 @@ use App\UserStudies;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
@@ -54,10 +55,10 @@ class ProfileController extends Controller
             'confirm' => 'required|min:8|same:new'
         ]);
 
-        if(bcrypt($request['current']) != User::where('id', '=', Auth::user()->id)->first()->password) return redirect('/member/profile')->withErrors('Current password is different');
+        if(!Hash::check($request['current'], Auth::user()->password)) return redirect('/member/profile')->withErrors('Current password is different');
         
-        $user = User::where('id', '=', Auth::user()->id);
-        $user->password = bcrypt($request['current']);
+        $user = User::where('id', '=', Auth::user()->id)->first();
+        $user->password = bcrypt($request['new']);
         $user->save();
 
         return redirect('/member');
