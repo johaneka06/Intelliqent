@@ -114,3 +114,11 @@ body {
     background-color: lightgray;
     height: 2px;
 }
+
+.bg-info{
+    background-color: #854dff !important;
+}
+
+.icon{
+    color: #061551;
+}
