@@ -12,7 +12,7 @@
                 <a class="nav-link mr-4" href="{{ url('/') }}" id="home"><strong class="navbar-hover-color">Home</strong></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link mr-4" href="#" id="learn"><strong class="navbar-hover-color">Learn</strong></a>
+                <a class="nav-link mr-4" href="{{ url('/course') }}" id="learn"><strong class="navbar-hover-color">Learn</strong></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link mr-4" href="#" id="forum"><strong class="navbar-hover-color">Forum</strong></a>
