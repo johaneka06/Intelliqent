@@ -7,7 +7,7 @@
 
 <div class="ml-auto">
   <form action="{{ url('/forum/search/') }}" method="GET">
-    <div class="form-inline ml-auto">
+    <div class="form-inline ml-auto d-flex justify-content-end mb-5">
       <input class="form-control" type="search" placeholder="Search" aria-label="Search" name="search">
       <button class="btn btn-primary ml-sm-2" type="submit">Search</button>
     </div>

@@ -96,3 +96,16 @@ body {
 .theater-mode {
     background-color: #1d1d1d;
 }
+
+.reply-button {
+    color: #4e3299;
+}
+
+.reply-button:hover {
+    color: #854dff;
+}
+
+.divider{
+    background-color: lightgray;
+    height: 2px;
+}
