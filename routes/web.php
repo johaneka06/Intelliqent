@@ -42,6 +42,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('/forum/thread/{id}/reply', 'ForumController@reply');
     Route::get('/forum', 'ForumController@index');
 
+    Route::post('/member/profile/password', 'ProfileController@edit');
     Route::post('/member/profile/{id}', 'ProfileController@update');
     Route::get('/member', 'ProfileController@index');
     Route::get('/member/profile', 'ProfileController@create');

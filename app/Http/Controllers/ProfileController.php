@@ -46,28 +46,32 @@ class ProfileController extends Controller
         return view('update-profile', ['user' => $current]);
     }
 
-    public function edit($id)
+    public function edit(Request $request)
     {
-        //
+        $request = $request->validate([
+            'current' => 'required|min:8',
+            'new' => 'required|min:8',
+            'confirm' => 'required|min:8|same:new'
+        ]);
+
+        if(bcrypt($request['current']) != User::where('id', '=', Auth::user()->id)->first()->password) return redirect('/member/profile')->withErrors('Current password is different');
+        
+        $user = User::where('id', '=', Auth::user()->id);
+        $user->password = bcrypt($request['current']);
+        $user->save();
+
+        return redirect('/member');
+
     }
 
     public function update(ProfileUpdate $request, $id)
     {
         $request = $request->validated();
 
-        $path = "profile/default.png";
-
-        if($request['profile'] != null)
-        {
-            $path = Storage::disk('local')->put('public', $request['profile'], 'public');
-            $path = 'storage/'.basename($path);
-        }
-
         $user = User::where('id', '=', $id)->first();
         
         $user->name = $request['name'];
         $user->username = $request['username'];
-        $user->profile = $path;
         $user->save();
 
         return redirect('/member');

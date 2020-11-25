@@ -26,7 +26,6 @@ class ProfileUpdate extends FormRequest
         return [
             'name' => 'required',
             'username' => 'required',
-            'profile' => 'nullable|mimes:jpeg,png,jpg|max:2048'
         ];
     }
 }
