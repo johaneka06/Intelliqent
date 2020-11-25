@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Material;
+use App\Preference;
 use App\Topic;
 use App\UserStudies;
 use Illuminate\Http\Request;
@@ -21,6 +22,8 @@ class ContentController extends Controller
 
     public function create()
     {
+        if(count(Preference::where('user_id', '=', Auth::user()->id)->get()) == 0) return redirect('/course/all');
+        
         $courses = DB::table('preferences')
                         ->join('categories', 'preferences.category_id', '=', 'categories.id')
                         ->join('materials', 'categories.id', '=', 'materials.category_id')

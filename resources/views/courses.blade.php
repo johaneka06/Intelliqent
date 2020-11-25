@@ -22,7 +22,7 @@
     <div class="col-8 mb-5 ">
       <div class="card mb-5">
         <div class="card-header d-flex">
-          <div class="row">
+          <div class="row d-flex align-items-center">
             <div class="col">
               <strong>Course List</strong>
             </div>
