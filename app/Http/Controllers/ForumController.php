@@ -23,6 +23,7 @@ class ForumController extends Controller
 
     public function create($id)
     {
+        if($id == 0) return redirect('/forum');
         $threads = Thread::where('category_id', '=', $id)->get();
         $categories = Category::all();
 
