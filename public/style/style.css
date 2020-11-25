@@ -76,6 +76,16 @@ body {
     transform: translate(-50%, -50%);
 }
 
+.features{
+    color: #4e3299;
+    font-weight: 900;
+}
+
+.why-background{
+    background-color: #f2f7ff;
+    height: 1000px;
+}
+
 .ide {
     font-family: 'Courier New', Courier, monospace;
     font-size: 12pt;
@@ -85,6 +95,19 @@ body {
 
 .theater-mode {
     background-color: #1d1d1d;
+}
+
+.reply-button {
+    color: #4e3299;
+}
+
+.reply-button:hover {
+    color: #854dff;
+}
+
+.divider{
+    background-color: lightgray;
+    height: 2px;
 }
 
 .features{

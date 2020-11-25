@@ -14,13 +14,14 @@ class CreateRepliesTable extends Migration
     public function up()
     {
         Schema::create('replies', function (Blueprint $table) {
-            $table->string('id', 32)->primary();
+            $table->string('id', 50)->primary();
             $table->unsignedBigInteger('user_id');
-            $table->string('thread_id', 32);
+            $table->string('thread_id', 50);
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('thread_id')->references('id')->on('threads');
             $table->text('reply');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
