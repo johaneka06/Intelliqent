@@ -19,8 +19,8 @@ Route::get('/home', 'PageController@index')->name('home');
 Route::group(['middleware' => ['guest']], function() {
     Route::get('/register', 'UserController@index');
     Route::post('/register', 'UserController@store');
-    Route::get('/login', 'loginController@index')->name('login');
-    Route::post('/login', 'loginController@authorizeLogin');
+    Route::get('/login', 'LoginController@index')->name('login');
+    Route::post('/login', 'LoginController@authorizeLogin');
 });
 
 Route::group(['middleware' => ['auth']], function() {
