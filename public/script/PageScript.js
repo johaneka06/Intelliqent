@@ -14,6 +14,9 @@ function onLoad() {
     } else if(location.includes('course')) {
         var element = document.getElementById('learn')
         element.classList.add("active")
+    } else if(location.includes("forum")){
+        var element = document.getElementById('forum')
+        element.classList.add("active");
     }
     
 }

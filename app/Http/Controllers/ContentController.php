@@ -6,6 +6,7 @@ use App\Category;
 use App\Material;
 use App\Preference;
 use App\Topic;
+use App\UserStudies;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -56,7 +57,13 @@ class ContentController extends Controller
     public function topic($material_id, $topic_id)
     {
         $current_topic = Topic::where('id', '=', $topic_id)->first();
-        
+
+        $studied = new UserStudies;
+        $studied->user_id = Auth::user()->id;
+        $studied->material_id = $material_id;
+        $studied->topic_id = $topic_id;
+        $studied->save();
+
         $topic_id++;
 
         $next_topic = Topic::where([

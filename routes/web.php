@@ -26,8 +26,8 @@ Route::group(['middleware' => ['guest']], function() {
 Route::group(['middleware' => ['auth']], function() {
     Route::get('/register/preferences', 'UserController@create');
     Route::post('/register/preferences', 'UserController@save');
-    Route::get('/member', 'UserController@show');
     Route::get('/logout', 'UserController@logout');
+
     Route::get('/course/search/', 'ContentController@search');
     Route::get('/course/filter/category/', 'ContentController@find');
     Route::get('/course/all', 'ContentController@index');
@@ -41,5 +41,14 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/forum/thread/{id}', 'ForumController@show');
     Route::post('/forum/thread/{id}/reply', 'ForumController@reply');
     Route::get('/forum', 'ForumController@index');
+
+    Route::post('/member/profile/password', 'ProfileController@edit');
+    Route::post('/member/profile/{id}', 'ProfileController@update');
+    Route::get('/member', 'ProfileController@index');
+    Route::get('/member/profile', 'ProfileController@create');
+
+    Route::post('/preferences/update', 'UserController@edit');
+    Route::get('/preferences/update', 'UserController@display');
+    
 });
 

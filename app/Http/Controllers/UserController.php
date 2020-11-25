@@ -28,10 +28,8 @@ class UserController extends Controller
         $userId = Auth::user()->id;
         $preferences = $request->input('preferences');
 
-        if($preferences != null)
-        {
-            foreach($preferences as $preference)
-            {
+        if ($preferences != null) {
+            foreach ($preferences as $preference) {
                 $pref = new Preference;
                 $pref->user_id = $userId;
                 $pref->category_id = $preference;
@@ -59,28 +57,41 @@ class UserController extends Controller
         Auth::attempt(['email' => $newUser->email, 'password' => $request['password']]);
 
         return redirect('/register/preferences');
-        
     }
 
-    public function show()
-    {
-        $user = Auth::user();
-        return view('member', ['user' => $user]);
-    }
-
-    public function edit($id)
-    {
-        //
-    }
-
-    public function update(Request $request, $id)
-    {
-        //
-    }
-    
     public function logout()
     {
         Auth::logout();
         return redirect('/');
+    }
+
+    public function display()
+    {
+        $categories = Category::all();
+        $array = [];
+        $prefs = Preference::where('user_id', '=', Auth::user()->id)->get();
+
+        foreach ($prefs as $pref) {
+            array_push($array, $pref->category_id);
+        }
+        
+        return view('select-preference', ['preferences' => $array, 'categories' => $categories]);
+    }
+
+    public function edit(Request $request)
+    {
+        $preferences = $request->preferences;
+
+        $userId = Auth::user()->id;
+        Preference::where('user_id', '=', $userId)->delete();
+
+        foreach ($preferences as $preference) {
+            $pref = new Preference;
+            $pref->user_id = $userId;
+            $pref->category_id = $preference;
+            $pref->save();
+        }
+
+        return redirect('/member');
     }
 }
