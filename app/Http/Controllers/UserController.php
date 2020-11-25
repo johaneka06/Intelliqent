@@ -61,22 +61,6 @@ class UserController extends Controller
         return redirect('/register/preferences');
         
     }
-
-    public function show()
-    {
-        $user = Auth::user();
-        return view('member', ['user' => $user]);
-    }
-
-    public function edit($id)
-    {
-        //
-    }
-
-    public function update(Request $request, $id)
-    {
-        //
-    }
     
     public function logout()
     {

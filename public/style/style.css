@@ -39,6 +39,12 @@ body {
     
 }
 
+.circle {
+    border-radius: 50%;
+    max-width: 180px;
+    max-height: 180px;
+}
+
 .center-self{
     text-align: center;
 }
