@@ -10,7 +10,7 @@
       <div class="card text-center">
         <div class="card-body">
           <div>
-            <img src="{{ asset('/profile/'.$user->profile) }}" alt="{{ $user->profile }}" class="circle">
+            <img src="{{ asset($user->profile) }}" alt="{{ $user->profile }}" class="circle">
           </div>
           <h4 class="mt-3">{{ $user->name }}</h4>
           <h6 class="mt2">{{ $user->username }}</h6>
