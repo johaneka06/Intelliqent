@@ -3,7 +3,7 @@
 @section('page-content')
 <div class="container mt-5">
   <h2 class="text-center">Update your profile</h2>
-  <div class="card mt-5 w-50 mx-auto d-block justify-content-center">
+  <div class="card mt-5 w-50 mx-auto d-block justify-content-center mb-5">
     <div class="card-body ">
       @if($errors->any())
       @foreach($errors->all() as $error)

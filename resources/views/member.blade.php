@@ -14,8 +14,8 @@
           </div>
           <h4 class="mt-3">{{ $user->name }}</h4>
           <h6 class="mt2">{{ $user->username }}</h6>
-        <a href="{{ url('/member/profile')}}" class="btn btn-primary mt-2">Edit Profile</a>
-        <a href="{{ url('/preferences/update') }}" class="btn btn-primary mt-2 mb-2">Select Preference</a>
+        <a href="{{ url('/member/profile')}}" class="btn btn-primary mt-2 w-100">Edit Profile</a>
+        <a href="{{ url('/preferences/update') }}" class="btn btn-primary mt-2 mb-2 w-100">Select Preferences</a>
         </div>
       </div>
     </div>

@@ -3,7 +3,7 @@
 
 @section('page-content')
 
-<div class="container mt-4">
+<div class="container mt-4 mb-5">
   <h3 class="text-center mb-5">Select your content preferences</h3>
   @if(!isset($preferences))
   <form action="{{ url('/register/preferences') }}" method="post">
