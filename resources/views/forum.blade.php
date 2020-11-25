@@ -33,8 +33,13 @@
               <div class="d-flex align-items-center">
                 <label for="select">Filter by category: </label>
                 <select name="select" class="custom-select w-50 ml-3" onchange="loadForum()" id="categorySelector">
+                  <option value="0">All</option>
                   @foreach($categories as $category)
+                  @if(request()->id != null && request()->id == $category->id)
+                  <option value="{{ $category->id }}" selected>{{ $category->category_name }}</option>
+                  @else
                   <option value="{{ $category->id }}">{{ $category->category_name }}</option>
+                  @endif
                   @endforeach
                 </select>
               </div>
