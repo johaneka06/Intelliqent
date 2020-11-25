@@ -85,3 +85,14 @@ body {
     background-color: #f2f7ff;
     height: 1000px;
 }
+
+.ide {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 12pt;
+    background-color: black;
+    color: white;
+}
+
+.theater-mode {
+    background-color: #1d1d1d;
+}
