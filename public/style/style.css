@@ -109,3 +109,13 @@ body {
     background-color: lightgray;
     height: 2px;
 }
+
+.features{
+    color: #4e3299;
+    font-weight: 900;
+}
+
+.why-background{
+    background-color: #f2f7ff;
+    height: 1000px;
+}
