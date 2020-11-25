@@ -1,0 +1,133 @@
+body {
+    font-family: 'Raleway', sans-serif;
+}
+
+.navbar-hover-color:hover { color: #854dff !important; }
+
+.active { color:  #4e3299 !important; }
+
+.bg-purple{
+    background-color: #061551;
+}
+
+.text-light-purple{
+    color: #854dff;
+}
+
+.btn-primary, .btn-primary:active, .btn-primary:visited, .btn:focus {
+    background-color:  #854dff !important;
+    outline: none !important;
+    box-shadow: none !important;
+    border: none;
+}
+
+.btn-primary:hover{
+    background-color:   #4e3299 !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.btn-secondary, .btn-secondary:active, .btn-secondary:visited, .btn:focus {
+    background-color:  #854dff !important;
+    outline: none !important;
+    box-shadow: none !important;
+    border: none;
+}
+
+.btn-secondary:hover{
+    background-color:   white !important;
+    color: #854dff;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.title-background{
+    background: rgb(207,118,225);
+    background: linear-gradient(171deg, rgba(207,118,225,1) 0%, rgba(255,182,139,1) 100%);
+    height: 900px;
+}
+
+.footer-background{
+    background: rgb(207,118,225);
+    background: linear-gradient(171deg, rgba(207,118,225,1) 0%, rgba(255,182,139,1) 100%);
+    height: 400px;
+}
+
+
+.big-and-bold{
+    font-size: 70px;
+    font-weight: 900;
+    
+}
+
+.less-big-and-bold{
+    font-size: 50px;
+    font-weight: 900;
+}
+.circle {
+    border-radius: 50%;
+    max-width: 180px;
+    max-height: 180px;
+}
+
+.center-self{
+    text-align: center;
+}
+
+.center-content{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.features{
+    color: #4e3299;
+    font-weight: 900;
+}
+
+.why-background{
+    background-color: #f2f7ff;
+    height: 1000px;
+}
+
+.ide {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 12pt;
+    background-color: black;
+    color: white;
+}
+
+.theater-mode {
+    background-color: #1d1d1d;
+}
+
+.reply-button {
+    color: #4e3299;
+}
+
+.reply-button:hover {
+    color: #854dff;
+}
+
+.divider{
+    background-color: lightgray;
+    height: 2px;
+}
+
+.bg-info{
+    background-color: #854dff !important;
+}
+
+.icon{
+    color: #061551;
+}
+.features{
+    color: #4e3299;
+    font-weight: 900;
+}
+
+.why-background{
+    background-color: #f2f7ff;
+    height: 1000px;
+}
