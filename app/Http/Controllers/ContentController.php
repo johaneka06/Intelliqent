@@ -22,18 +22,17 @@ class ContentController extends Controller
 
     public function create()
     {
-        if(count(Preference::where('user_id', '=', Auth::user()->id)->get()) == 0) return redirect('/course/all');
-        
+        if (count(Preference::where('user_id', '=', Auth::user()->id)->get()) == 0) return redirect('/course/all');
+
         $courses = DB::table('preferences')
-                        ->join('categories', 'preferences.category_id', '=', 'categories.id')
-                        ->join('materials', 'categories.id', '=', 'materials.category_id')
-                        ->where('preferences.user_id', '=', Auth::user()->id)
-                        ->get();
-        
+            ->join('categories', 'preferences.category_id', '=', 'categories.id')
+            ->join('materials', 'categories.id', '=', 'materials.category_id')
+            ->where('preferences.user_id', '=', Auth::user()->id)
+            ->get();
+
         $categories = Category::all();
 
         return view('courses', ['courses' => $courses, 'categories' => $categories, 'isPreferred' => true]);
-        
     }
 
     public function show($id)
@@ -45,12 +44,12 @@ class ContentController extends Controller
 
     public function search(Request $request)
     {
-        if($request == null) return redirect('/course');
+        if ($request == null) return redirect('/course');
 
-        $topics = Material::where('material_name', 'like', "%".$request->key."%")->get();
+        $topics = Material::where('material_name', 'like', "%" . $request->key . "%")->get();
         $categories = Category::all();
-        
-        return view('courses', ['courses' => $topics, 'categories' => $categories] );
+
+        return view('courses', ['courses' => $topics, 'categories' => $categories]);
     }
 
 
@@ -58,29 +57,41 @@ class ContentController extends Controller
     {
         $current_topic = Topic::where('id', '=', $topic_id)->first();
 
-        $studied = new UserStudies;
-        $studied->user_id = Auth::user()->id;
-        $studied->material_id = $material_id;
-        $studied->topic_id = $topic_id;
-        $studied->save();
+        if (!$this->checkStudiedExist($material_id, $topic_id)) {
+            $studied = new UserStudies;
+            $studied->user_id = Auth::user()->id;
+            $studied->material_id = $material_id;
+            $studied->topic_id = $topic_id;
+            $studied->save();
+        }
 
         $topic_id++;
 
         $next_topic = Topic::where([
-                ['id', '=', $topic_id],
-                ['material_id', '=', $material_id]
-            ])->first();
+            ['id', '=', $topic_id],
+            ['material_id', '=', $material_id]
+        ])->first();
 
         return view('course-video', ['current' => $current_topic, 'next' => $next_topic]);
     }
 
     public function find(Request $request)
     {
-        if($request->category == null) return redirect('/course');
+        if ($request->category == null) return redirect('/course');
 
         $topics = Material::whereIn('category_id', $request->category)->get();
         $categories = Category::all();
-        
+
         return view('courses', ['courses' => $topics, 'categories' => $categories, 'checked' => $request->category]);
+    }
+
+    private function checkStudiedExist($material_id, $topic_id)
+    {
+        $studied = UserStudies::where('user_id', '=', Auth::user()->id)
+            ->where('material_id', '=', $material_id)
+            ->where('topic_id', '=', $topic_id)
+            ->get();
+
+        return ($studied->count() > 0) ? true : false;
     }
 }
