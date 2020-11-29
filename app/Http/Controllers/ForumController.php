@@ -49,7 +49,7 @@ class ForumController extends Controller
     public function show($id)
     {
         $thread = Thread::where('id', '=', $id)->first();
-        $replies = Reply::where('thread_id', '=', $id)->get();
+        $replies = Reply::where('thread_id', '=', $id)->orderBy("created_at", 'ASC')->get();
 
         return view('forum-reply', ['thread' => $thread, 'replies' => $replies]);
     }
