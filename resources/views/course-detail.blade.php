@@ -17,7 +17,12 @@
     <div class="mt-3">
       <h5>Number of Topics: {{ count($course->topics) }}</h5>
     </div>
-
+    @if(Auth::user() && Auth::user()->isAdmin())
+    <div class="mt-3">
+      <a href="{{ url('/course/'.$course->id.'/update/') }}" class="btn btn-primary">Update course</a>
+      <a href="{{ url('/topic/'.$course->id.'/view/') }}" class="btn btn-primary">Update material (topics)</a>
+    </div>
+    @endif
     <div class="topic-list mt-3 mb-5">
       <h5>Topic List: </h5>
       @foreach($course->topics as $topic)

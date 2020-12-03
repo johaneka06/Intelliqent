@@ -23,6 +23,20 @@ Route::group(['middleware' => ['guest']], function() {
     Route::post('/login', 'LoginController@authorizeLogin');
 });
 
+Route::group(['middleware' => ['auth', 'role:admin']], function() {
+    Route::get('/category/manage/', 'CategoryController@index');
+    Route::post('/category/create', 'CategoryController@store');
+    Route::get('/category/{id}/delete', 'CategoryController@destroy');
+
+    Route::post('/course/create', 'CourseController@store');
+    Route::post('/course/{id}/update', 'CourseController@update');
+    Route::get('/course/{id}/update', 'CourseController@show');
+    
+    Route::post('/topic/{id}/create/', 'TopicController@store');
+    Route::post('/topic/{material_id}/update/{topic_id}', 'TopicController@update');
+    Route::get('/topic/{id}/view', 'TopicController@index');
+});
+
 Route::group(['middleware' => ['auth']], function() {
     Route::get('/register/preferences', 'UserController@create');
     Route::post('/register/preferences', 'UserController@save');
