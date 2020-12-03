@@ -20,4 +20,9 @@ class Category extends Model
     {
         return $this->hasMany('App\Thread');
     }
+
+    public function Materials()
+    {
+        return $this->hasMany('App\Material');
+    }
 }

@@ -15,8 +15,13 @@ class ContentController extends Controller
 {
     public function index()
     {
-        $courses = Material::join('categories', 'materials.category_id', '=', 'categories.id')->where('deleted_at', '=', NULL)->get();
+        $courses = Material::select('materials.*')
+            ->join('categories', 'materials.category_id', '=', 'categories.id')
+            ->where('deleted_at', '=', NULL)
+            ->get();
+
         $categories = Category::all();
+        
         return view('courses', ['courses' => $courses, 'categories' => $categories]);
     }
 
@@ -24,10 +29,10 @@ class ContentController extends Controller
     {
         if (count(Preference::where('user_id', '=', Auth::user()->id)->get()) == 0) return redirect('/course/all');
 
-        $courses = DB::table('preferences')
+        $courses = Preference::select('materials.*')
             ->join('categories', 'preferences.category_id', '=', 'categories.id')
             ->join('materials', 'categories.id', '=', 'materials.category_id')
-            ->where('preferences.user_id', '=', Auth::user()->id)
+            ->where('user_id', '=', Auth::user()->id)
             ->where('categories.deleted_at', '=', NULL)
             ->get();
 

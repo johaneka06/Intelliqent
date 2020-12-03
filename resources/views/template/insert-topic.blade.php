@@ -8,7 +8,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <form action="{{ url('/topic/'.$id.'/create') }}" method="post">
+        <form action="{{ url('/topic/'.$material->id.'/create') }}" method="post">
           @csrf
           <div class="form-inline d-flex justify-content-start mb-3">
             <label for="name" class="col-3 text-left">Topic Name: </label>
