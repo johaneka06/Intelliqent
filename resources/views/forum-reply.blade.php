@@ -4,8 +4,12 @@
 <div class="container mt-3 mb-4">
   <div class="card">
     <div class="card-body">
-      <label><small>{{ $thread->user->name }}</small></label>
-      <label class="float-right"><small>{{ (new Carbon\Carbon($thread->created_at))->format('d/m/Y H:i')  }}</small></label>
+      <div class="mb-2">
+        <img src="{{ asset('/profile/'.$thread->user->profile) }}" alt="{{ $thread->user->profile }}" class="circle-forum">
+        <label><small>{{ $thread->user->name }}</small></label>
+        <label class="float-right"><small>{{ (new Carbon\Carbon($thread->created_at))->format('d/m/Y H:i')  }}</small></label>
+      </div>
+      
       <div class="divider d-block"></div>
       <h5 class="mt-2"><strong>{{ $thread->thread_name }}</strong></h5>
       <p class="mt-2">{{ $thread->thread_question }}</p>
