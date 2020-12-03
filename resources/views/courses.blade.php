@@ -1,7 +1,7 @@
 @extends('template/template')
 @section('page-title', 'Course List')
 @section('page-content')
-<div class="container mt-4 mb-4">
+<div class="container mt-4 mb-5">
   <div class="row">
     <div class="col-4">
       <div class="card">
@@ -19,7 +19,7 @@
       </div>
     </div>
 
-    <div class="col-8 mb-5 ">
+    <div class="col-8  ">
       <div class="card mb-5">
         <div class="card-header d-flex">
           <div class="row d-flex align-items-center">
@@ -43,11 +43,23 @@
                 <div class="card-body">
                   {{ \Illuminate\Support\Str::limit($course->material_description, 100, '...')  }}
 
-                  @if(\Illuminate\Support\Str::length($course->material_description) > 100)
+                 
                   <div class="mt-2">
+                    @if(\Illuminate\Support\Str::length($course->material_description) > 100)
                     <a href="{{ url('/course/'.$course->id) }}" class="btn-sm btn-primary">Read more</a>
+                    @else
+                    <a href="{{ url('/course/'.$course->id) }}" class="btn-sm btn-primary">Learn</a>
+                    @endif
+                    @if(Auth::user()->isAdmin())
+                    @if(count($course->topics) == 0 )
+                    
+                    @elseif(count($course->topics) > 0)
+                    <br>
+                    <a href="{{ url('course/'.$course->id.'/update') }}" class="btn-sm btn-primary">Edit course</a>
+                    @endif
+                    @endif
                   </div>
-                  @endif
+                  
                 </div>
               </div>
             </div>
@@ -62,5 +74,11 @@
       </div>
     </div>
   </div>
+  @if(Auth::user()->isAdmin())
+  <div class="text-center">
+    <button class="btn btn-primary" data-toggle="modal" data-target="#courseModal">Create new course</button>
+  </div>
+  @include('template/insert-course')
+  @endif
 </div>
 @endsection

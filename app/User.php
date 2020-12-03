@@ -46,4 +46,9 @@ class User extends Authenticatable
     {
         $this->hasMany('App\Reply');
     }
+
+    public function isAdmin()
+    {
+        return $this->role == 'admin' ? true : false;
+    }
 }
