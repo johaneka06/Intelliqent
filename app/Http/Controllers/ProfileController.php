@@ -88,10 +88,13 @@ class ProfileController extends Controller
 
         $file = $request->file('pict');
         $fileName = basename($file->getClientOriginalName());
-        $file->storeAs(public_path().'/profile/', $fileName);
         
+        // $file->move('profile', $fileName);
+
+        $fileName = Storage::disk('public_path')->put('public', $file, 'public');
+
         $user = User::find($userId);
-        $user->profile = 'profile/'.$fileName;
+        $user->profile = $fileName;
         $user->save();
         
         return redirect('/member');
