@@ -77,4 +77,23 @@ class ProfileController extends Controller
 
         return redirect('/member');
     }
+
+    
+    public function profilePict(Request $request)
+    {
+        $userId = Auth::user()->id;
+        $this->validate($request, [
+            'pict' => 'required|mimes:png,jpeg,jpg|max:2048|image'
+        ]);
+
+        $file = $request->file('pict');
+        $fileName = basename($file->getClientOriginalName());
+        $file->move('profile', $fileName);
+
+        $user = User::find($userId);
+        $user->profile = $fileName;
+        $user->save();
+        
+        return redirect('/member');
+    }
 }
