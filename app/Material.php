@@ -12,4 +12,9 @@ class Material extends Model
     {
         return $this->hasMany('App\Topic');
     }
+
+    public function Category()
+    {
+        return $this->belongsTo('App\Category');
+    }
 }
