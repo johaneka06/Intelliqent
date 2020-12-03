@@ -15,7 +15,7 @@ class ContentController extends Controller
 {
     public function index()
     {
-        $courses = Material::all();
+        $courses = Material::join('categories', 'materials.category_id', '=', 'categories.id')->where('deleted_at', '=', NULL)->get();
         $categories = Category::all();
         return view('courses', ['courses' => $courses, 'categories' => $categories]);
     }
@@ -28,6 +28,7 @@ class ContentController extends Controller
             ->join('categories', 'preferences.category_id', '=', 'categories.id')
             ->join('materials', 'categories.id', '=', 'materials.category_id')
             ->where('preferences.user_id', '=', Auth::user()->id)
+            ->where('categories.deleted_at', '=', NULL)
             ->get();
 
         $categories = Category::all();
