@@ -88,7 +88,8 @@ class ProfileController extends Controller
 
         $file = $request->file('pict');
         $fileName = basename($file->getClientOriginalName());
-        $file->move(public_path().'/profile', $fileName);
+        // $file->move(public_path().'/profile', $fileName);
+        $file->storeAs(public_path().'/profile/', $fileName);
         
         $user = User::find($userId);
         $user->profile = $fileName;
