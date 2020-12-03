@@ -3,7 +3,7 @@
 @section('page-content')
 <div class="container mt-5 mb-5">
   <div class="text-center">
-    <h3>Edit topics for {{ $topics[0]->material->material_name }}</h3>
+    <h3>Edit topics for {{ $material->material_name }}</h3>
     <div class="container card mt-3">
       <div class="text-right mt-3">
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#topicModal">
@@ -17,7 +17,7 @@
       </div>
       @endforeach
       @endif
-      
+
       @foreach($topics as $topic)
       <div class="card mb-3 mt-3">
         <div class="card-content">

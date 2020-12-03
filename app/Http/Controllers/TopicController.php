@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\TopicsReq;
+use App\Material;
 use App\Topic;
-use Illuminate\Cache\RedisTaggedCache;
-use Illuminate\Http\Request;
 
 class TopicController extends Controller
 {
@@ -13,7 +12,8 @@ class TopicController extends Controller
     public function index($id)
     {
         $topics = Topic::where('material_id', '=', $id)->get();
-        return view('topic-editor', ['topics' => $topics, 'id' => $id]);
+        $material = Material::where('id', '=', $id)->first();
+        return view('topic-editor', ['topics' => $topics, 'material' => $material]);
     }
 
     

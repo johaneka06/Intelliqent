@@ -43,20 +43,15 @@
                 <div class="card-body">
                   {{ \Illuminate\Support\Str::limit($course->material_description, 100, '...')  }}
 
-                 
                   <div class="mt-2">
                     @if(\Illuminate\Support\Str::length($course->material_description) > 100)
                     <a href="{{ url('/course/'.$course->id) }}" class="btn-sm btn-primary">Read more</a>
                     @else
                     <a href="{{ url('/course/'.$course->id) }}" class="btn-sm btn-primary">Learn</a>
                     @endif
+
                     @if(Auth::user()->isAdmin())
-                    @if(count($course->topics) == 0 )
-                    
-                    @elseif(count($course->topics) > 0)
-                    <br>
                     <a href="{{ url('course/'.$course->id.'/update') }}" class="btn-sm btn-primary">Edit course</a>
-                    @endif
                     @endif
                   </div>
                   
