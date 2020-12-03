@@ -131,3 +131,8 @@ body {
     background-color: #f2f7ff;
     height: 1000px;
 }
+
+.circle-forum {
+    max-width: 80px;
+    max-height: 80px;
+}

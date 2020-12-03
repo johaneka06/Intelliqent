@@ -25,11 +25,13 @@
           <button type="button" class="btn btn-primary float-left" data-toggle="modal" data-target="#changePassword">
             Change Password
           </button>
+          <a class="btn btn-secondary" data-toggle="modal" data-target="#profilePict">Change profile</a>
           <button type="submit" class=" btn btn-primary">Update Profile</button>
         </div>
       </form>
     </div>
   </div>
   @include('template/changepass')
+  @include('template/change-pict')
 </div>
 @endsection
