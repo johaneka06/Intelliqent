@@ -33,7 +33,7 @@ class CourseController extends Controller
     public function update(Request $request, $id)
     {
         $course = Material::where('id', '=', $id)->first();
-        $course->material_name = $request->name;
+        $course->material_name = $request->course_name;
         $course->material_description = $request->description;
         $course->save();
 
