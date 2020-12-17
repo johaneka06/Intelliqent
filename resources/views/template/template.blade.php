@@ -15,9 +15,10 @@
   <title>@yield('page-title')</title>
 </head>
 
-<body onload="onLoad()">
+<body onload="onLoad()" style="padding-top: 80px">
   @include('template/navbar')
   @yield('page-content')
+  
   @include('template/footer')
   <script src="{{ asset('/script/PageScript.js') }}"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
