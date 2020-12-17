@@ -15,7 +15,7 @@
   <title>@yield('page-title')</title>
 </head>
 
-<body onload="onLoad()" style="padding-top: 80px">
+<body onload="onLoad()">
   @include('template/navbar')
   @yield('page-content')
   

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light navbar-fixed-top">
+<nav class="navbar navbar-expand-lg navbar-light">
   <a class="navbar-brand" href="{{ url('/') }}">
     <img src="{{ asset('logo/intelliqent.png') }}" width="50" height="50" alt="" loading="lazy">
     <h3 class="d-inline ml-1 align-middle"><strong>INTELLIQENT</strong></h3>
